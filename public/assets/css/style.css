@@ -1,0 +1,703 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f6f7fb;
+    overflow-x: hidden;
+}
+
+:root {
+    --sidebar-width: 260px;
+    --theme-gold: #d4ac1c;
+}
+
+
+
+
+.sidebar-logo {
+    padding: 10px 0 5px 0;  /* top 10px, bottom 5px */
+    text-align: center;
+}
+
+.logo-img {
+    width: 115px;          /* fixed size better for sidebar */
+    height: 115px;         /* must be equal for perfect circle */
+    border-radius: 50%;
+    object-fit: cover;     /* prevents distortion */
+   
+}
+.sidebar{
+    display:flex;
+    flex-direction:column;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 15px 0;
+    margin-bottom: 0;
+}
+
+.sidebar-menu li {
+    margin: 6px 0;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 25px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+    border-radius: 6px;
+}
+.sidebar-scroll {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Hide scrollbar */
+.sidebar-scroll::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+.sidebar-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sidebar-menu a i {
+    color: #2ecc71;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(212,175,55,0.15);
+    color: #d4af37;
+}
+
+.sidebar-menu a.active {
+    background: #d4af37;
+    color: #000;
+}
+
+/* Logout */
+.sidebar-logout {
+    padding: 15px 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-logout a {
+    color: red;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+    min-height: 100vh;
+}
+
+
+
+
+.stats-card {
+    background: #f3f4f6;
+    border-radius: 14px;
+    padding: 22px 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+
+/* Gold curved left line */
+.stats-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 6px;
+    background: #d4ac1c;
+    border-radius: 0 15px 15px 0;
+}
+
+/* 🔥 Universal Hover */
+
+.stats-card:hover
+ {
+
+    transform: translateY(-6px) scale(1.015);
+
+    border-color: #d4ac1c;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.12),
+        0 0 40px rgba(212,172,28,0.35);
+}
+
+ .dashboard-module-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border-radius: 20px;
+    padding: 40px 25px;      /* increased padding */
+    min-height: 240px;       /* added height control */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Gold top accent line */
+.dashboard-module-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #d4af37, #f5d76e, #d4af37);
+}
+
+/* Soft gold glow */
+.dashboard-module-card::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+    border-radius: 50%;
+}
+
+/* Hover Effect */
+.dashboard-module-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 12px 25px rgba(212, 175, 55, 0.35),   /* Gold glow */
+        0 6px 15px rgba(212, 175, 55, 0.25),    /* Soft blur */
+        inset 0 0 12px rgba(212, 175, 55, 0.2); /* Inner shine */
+}
+/* ================================
+   ICON STYLE
+================================ */
+
+.dashboard-icon-box {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 18px;
+    background: linear-gradient(145deg, #d4af37, #b8902a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.45);
+    transition: all 0.35s ease;
+}
+
+.dashboard-module-card:hover .dashboard-icon-box {
+    transform: scale(1.12);
+    box-shadow: 0 14px 30px rgba(212, 175, 55, 0.65);
+}
+
+/* ================================
+   TITLE
+================================ */
+
+.dashboard-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+/* ================================
+   COUNT / AMOUNT STYLE
+================================ */
+
+
+.dashboard-count {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 10px 0;
+    letter-spacing: 0.5px;
+}
+/* ================================
+   MANAGE LINK
+================================ */
+
+.dashboard-manage-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dashboard-manage-link:hover {
+    letter-spacing: 1px;
+    color: #374151;
+}
+
+.stats-card h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* =========================
+   TABLE + DATATABLE
+========================= */
+
+div.dt-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+}
+
+div.dt-buttons button.dt-button,
+div.dt-buttons a.dt-button {
+    width: auto !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+}
+.dataTables_filter input {
+    border: 2px solid var(--theme-gold);
+    border-radius: 6px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+.table-responsive table{
+min-width:650px;
+}
+/* @media (max-width: 768px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+} */
+
+
+.chpass-main-content {
+    margin-left: 260px;
+    padding: 40px 60px;
+    min-height: 100vh;
+}
+
+.chpass-page-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 50px 60px;
+    overflow: hidden;
+    border-top: 6px solid #d4ac1c;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+    max-width: 950px;
+    margin: auto;
+}
+
+.chpass-page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.chpass-icon-box {
+    width: 90px;
+    height: 90px;
+    background: rgba(212,172,28,0.18);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.chpass-icon-box i {
+    font-size: 40px;
+    color: #d4ac1c;
+}
+
+.chpass-form-label {
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.form-control {
+    height: 50px;
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    border-color: #d4ac1c;
+    box-shadow: 0 0 0 0.15rem rgba(212,172,28,.25);
+}
+
+.chpass-btn-submit {
+    background: #d4ac1c;
+    color: #ffffff;
+    font-weight: 600;
+    height: 52px;
+    border-radius: 12px;
+    border: none;
+    padding: 0 40px;
+}
+
+.chpass-btn-submit:hover {
+    background: #b99616;
+}
+/* pagination */
+/* =========================
+   GLOBAL PAGINATION STYLE
+========================= */
+
+.pagination .page-link {
+    color: #d4ac1c;
+    border: 1px solid #d4ac1c;
+}
+
+.pagination .page-link:hover {
+    background-color: #f5e7b5;
+    color: #000;
+    border-color: #d4ac1c;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #d4ac1c !important;
+    border-color: #d4ac1c !important;
+    color: #fff !important;
+}
+
+.pagination .page-link:focus {
+    box-shadow: none;
+}
+.pagination .page-link {
+    border-radius: 8px !important;
+}
+
+/* ===================================
+   SIDEBAR (DESKTOP)
+=================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: #1f2937;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+    padding-top: 20px;
+    overflow-y: auto;   /* ADD THIS */
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #374151;
+}
+
+/* ===================================
+   MAIN CONTENT
+=================================== */
+
+
+.content-wrapper {
+    padding: 20px;
+}
+
+/* ===================================
+   TOPBAR (Mobile Only)
+=================================== */
+.topbar {
+    background: #1f2937;
+    padding: 10px 15px;
+}
+
+/* ===================================
+   TABLE RESPONSIVE FIX
+=================================== */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* ===================================
+   CARD SPACING
+=================================== */
+.card {
+    margin-bottom: 20px;
+}
+
+/* ===================================
+   MOBILE RESPONSIVE
+=================================== */
+/* @media (max-width: 992px) {
+
+    .sidebar {
+        left: calc(-1 * var(--sidebar-width));
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+} */
+ /* @media (max-width: 992px) {
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100vh;
+    z-index: 1050;
+    transition: left 0.3s ease;
+}
+
+.sidebar.active{
+    left: 0;
+}
+
+.main-content{
+    margin-left: 0;
+    width: 100%;
+}
+
+} */
+@media (max-width: 992px) {
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 240px;
+        height: 100vh;
+        z-index: 1050;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+  .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Overlay behind sidebar */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1049;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
+/* ===================================
+   SMALL DEVICES
+=================================== */
+@media (max-width: 576px) {
+    .chpass-page-card {
+        padding: 30px 20px;
+    }
+
+    .chpass-main-content {
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+
+    .chpass-btn-submit {
+        width: 100%;
+        padding: 0;
+    }
+}
+@media (max-width: 576px) {
+    .dt-buttons {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        width: 100%;
+    }
+
+  .dt-buttons .dt-button {
+        flex: 0 0 auto !important;
+        font-size: 12px !important;
+        padding: 4px 10px !important;
+        width: auto !important;
+        max-width: fit-content !important;
+    }
+  
+
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: left !important;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+.action-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-icon {
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.action-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+/* ===============================
+   DASHBOARD VALUE COLOR CONTROL
+================================ */
+
+
+/* Control ALL values + ₹ from here */
+.dashboard-value {
+    color: #b8860b !important;
+    -webkit-text-fill-color: #b8860b !important;
+}
+.bid-box {
+    height: 75px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #eeefe9;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.bid-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.bid-number {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.bid-amount {
+    position: absolute;
+    bottom: 4px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.total-pill {
+    background: #dc3545;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(255, 30, 86, 0.3);
+    margin-bottom: 6px;
+}
+.container-fluid {
+    background: #f8f9fa;
+}
+@media (max-width: 375px) {
+    .bid-box {
+        height: 55px;
+    }
+
+    .bid-number {
+        font-size: 12px;
+        top: 3px;
+    }
+
+    .bid-amount {
+        font-size: 12px;
+        bottom: 2px;
+    }
+}
+
+.bid-number {
+    color: #dc3545 !important;
+}
+
+.bid-amount {
+    color: #1d4ed8 !important;
+}
